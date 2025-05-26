@@ -19,13 +19,16 @@ public class Employee {
 	private LocalDate DOB;
 	private  Instant DOJ;
 	private boolean status;
+	private String role;
 	
 	public Employee() {
 		super();
 	}
 
+	
+
 	public Employee(int emp_id, String firstName, String lastName, String email_id, LocalDate dOB, Instant dOJ,
-			boolean status) {
+			boolean status, String role) {
 		super();
 		Emp_id = emp_id;
 		this.firstName = firstName;
@@ -34,7 +37,10 @@ public class Employee {
 		DOB = dOB;
 		DOJ = dOJ;
 		this.status = status;
+		this.role = role;
 	}
+
+
 
 	public int getEmp_id() {
 		return Emp_id;
@@ -91,12 +97,29 @@ public class Employee {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
+	
+	
+
+	public String getRole() {
+		return role;
+	}
+
+
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+
 
 	@Override
 	public String toString() {
 		return "Employee [Emp_id=" + Emp_id + ", firstName=" + firstName + ", lastName=" + lastName + ", email_id="
-				+ email_id + ", DOB=" + DOB + ", DOJ=" + DOJ + ", status=" + status + "]";
+				+ email_id + ", DOB=" + DOB + ", DOJ=" + DOJ + ", status=" + status + ", role=" + role + "]";
 	}
+
+
+
 
 	
 	
