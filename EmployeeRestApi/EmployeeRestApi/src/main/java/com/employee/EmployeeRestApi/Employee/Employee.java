@@ -12,12 +12,12 @@ import jakarta.persistence.Table;
 public class Employee {
 	
 	@Id
-	private int Emp_id;
+	private int id;
 	private String first_name;
 	private String last_name;
-	private String email_id;
-	private LocalDate DOB;
-	private  Instant DOJ;
+	private String email;
+	private LocalDate date_of_birth;
+	private  Instant date_of_joining;
 	private boolean status;
 	private String role;
 	
@@ -25,69 +25,65 @@ public class Employee {
 		super();
 	}
 
-	
-
-	public Employee(int emp_id, String first_name, String last_name, String email_id, LocalDate dOB, Instant dOJ,
-			boolean status, String role) {
+	public Employee(int id, String first_name, String last_name, String email, LocalDate date_of_birth,
+			Instant date_of_joining, boolean status, String role) {
 		super();
-		Emp_id = emp_id;
+		this.id = id;
 		this.first_name = first_name;
 		this.last_name = last_name;
-		this.email_id = email_id;
-		DOB = dOB;
-		DOJ = dOJ;
+		this.email = email;
+		this.date_of_birth = date_of_birth;
+		this.date_of_joining = date_of_joining;
 		this.status = status;
 		this.role = role;
 	}
 
-
-
-	public int getEmp_id() {
-		return Emp_id;
+	public int getId() {
+		return id;
 	}
 
-	public void setEmp_id(int emp_id) {
-		Emp_id = emp_id;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public String getFirstName() {
+	public String getFirst_name() {
 		return first_name;
 	}
 
-	public void setFirstName(String firstName) {
+	public void setFirst_name(String first_name) {
 		this.first_name = first_name;
 	}
 
-	public String getLastName() {
+	public String getLast_name() {
 		return last_name;
 	}
 
-	public void setLastName(String lastName) {
+	public void setLast_name(String last_name) {
 		this.last_name = last_name;
 	}
 
-	public String getEmail_id() {
-		return email_id;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setEmail_id(String email_id) {
-		this.email_id = email_id;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
-	public LocalDate getDOB() {
-		return DOB;
+	public LocalDate getDate_of_birth() {
+		return date_of_birth;
 	}
 
-	public void setDOB(LocalDate dOB) {
-		DOB = dOB;
+	public void setDate_of_birth(LocalDate date_of_birth) {
+		this.date_of_birth = date_of_birth;
 	}
 
-	public Instant getDOJ() {
-		return DOJ;
+	public Instant getDate_of_joining() {
+		return date_of_joining;
 	}
 
-	public void setDOJ(Instant dOJ) {
-		DOJ = dOJ;
+	public void setDate_of_joining(Instant date_of_joining) {
+		this.date_of_joining = date_of_joining;
 	}
 
 	public boolean isStatus() {
@@ -97,31 +93,24 @@ public class Employee {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-	
-	
 
 	public String getRole() {
 		return role;
 	}
 
-
-
 	public void setRole(String role) {
 		this.role = role;
 	}
 
-
-
 	@Override
 	public String toString() {
-		return "Employee [Emp_id=" + Emp_id + ", firstName=" + first_name + ", lastName=" + last_name + ", email_id="
-				+ email_id + ", DOB=" + DOB + ", DOJ=" + DOJ + ", status=" + status + ", role=" + role + "]";
+		return "Employee [id=" + id + ", first_name=" + first_name + ", last_name=" + last_name + ", email=" + email
+				+ ", date_of_birth=" + date_of_birth + ", date_of_joining=" + date_of_joining + ", status=" + status
+				+ ", role=" + role + "]";
 	}
 
-
-
-
 	
+
 	
 	
 	
