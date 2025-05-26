@@ -23,4 +23,20 @@ public class EmployeeService {
 		return repo.findById(id);
 	}
 
+	public Employee saveEmployee(Employee emp) {
+		return repo.save(emp);
+	}
+
+	public Employee updateEmployee(int id, Employee updatedEmp) {
+		Employee emp = repo.findById(id).orElseThrow();
+		emp.setFirst_name(updatedEmp.getFirst_name());
+		emp.setLast_name(updatedEmp.getLast_name());
+		emp.setEmail(updatedEmp.getEmail());
+		emp.setDate_of_birth(updatedEmp.getDate_of_birth());
+		emp.setDate_of_joining(updatedEmp.getDate_of_joining());
+		emp.setRole(updatedEmp.getRole());
+		emp.setStatus(updatedEmp.getStatus());
+		return repo.save(emp);
+	}
+
 }

@@ -86,7 +86,7 @@ public class Employee {
 		this.date_of_joining = date_of_joining;
 	}
 
-	public boolean isStatus() {
+	public boolean getStatus() {
 		return status;
 	}
 
