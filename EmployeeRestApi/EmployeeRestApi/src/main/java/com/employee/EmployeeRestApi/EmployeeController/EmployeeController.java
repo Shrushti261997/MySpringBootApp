@@ -23,65 +23,61 @@ import com.employee.EmployeeRestApi.EmployeeService.EmployeeService;
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
-	
+
 	@Autowired
 	private EmployeeService service;
 
 	@GetMapping("/all")
 	public ResponseEntity<List<Employee>> getAllEmployees() {
 		List<Employee> emp = service.getAllEmployees();
-		 return new ResponseEntity<>(emp,HttpStatus.OK);
+		return new ResponseEntity<>(emp, HttpStatus.OK);
 	}
-	
+
 	@GetMapping("/{id}")
-	public ResponseEntity<Employee> getEmployeeById(@PathVariable int id ){
-			Optional<Employee> allEmployees = service.getEmployeeById(id);
-			if(allEmployees.isPresent())
-			{
-				return new ResponseEntity<>(allEmployees.get(),HttpStatus.OK);
-			}
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	public ResponseEntity<Employee> getEmployeeById(@PathVariable int id) {
+		Optional<Employee> allEmployees = service.getEmployeeById(id);
+		if (allEmployees.isPresent()) {
+			return new ResponseEntity<>(allEmployees.get(), HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
-	
+
 	@PostMapping()
-	public ResponseEntity<Employee> saveEmployee(@RequestBody Employee emp)
-	{
+	public ResponseEntity<Employee> saveEmployee(@RequestBody Employee emp) {
 		try {
-		 service.saveEmployee(emp);
-		 return new ResponseEntity<>(emp,HttpStatus.CREATED);
-		}catch(Exception e) {
-		 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			service.saveEmployee(emp);
+			return new ResponseEntity<>(emp, HttpStatus.CREATED);
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 	}
-	
-	
-	
+
 	@PutMapping("/{id}")
-	public ResponseEntity<?> UpdateEmployee(@PathVariable int id,@RequestBody Employee emp)
-	{
-		
-		Employee updatedEmp =  service.updateEmployee(id,emp);
-		
-		if(updatedEmp !=null) {
-			return new ResponseEntity<> (updatedEmp,HttpStatus.OK);
-		}
-		else {
-			return new ResponseEntity<>("Employee not Found",HttpStatus.NOT_FOUND);
+	public ResponseEntity<?> UpdateEmployee(@PathVariable int id, @RequestBody Employee emp) {
+
+		Employee updatedEmp = service.updateEmployee(id, emp);
+
+		if (updatedEmp != null) {
+			return new ResponseEntity<>(updatedEmp, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>("Employee not Found", HttpStatus.NOT_FOUND);
 		}
 	}
-	
-		
-	
+
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> DeleteEmployee(@PathVariable int id)
-	{
+	public ResponseEntity<?> DeleteEmployee(@PathVariable int id) {
 		service.deleteEmployee(id);
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
-	
-	@GetMapping()
-	public String GetByEmail(@RequestParam(required=false) String email)
-	{
-		return service.getByEmail(email);
+
+	@GetMapping("/by-email")
+	public ResponseEntity<?> GetByEmail(@RequestParam(required = false) String email) {
+		List<Employee> emp = service.getByEmail(email);
+		if (emp.isEmpty()) {
+			return new ResponseEntity<String>("Employee not found with email:" + email, HttpStatus.NOT_FOUND);
+		} else {
+			return new ResponseEntity<List<Employee>>(emp, HttpStatus.OK);
+
+		}
 	}
 }

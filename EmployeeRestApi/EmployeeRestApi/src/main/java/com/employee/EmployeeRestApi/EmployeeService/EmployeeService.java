@@ -14,7 +14,7 @@ public class EmployeeService {
 
 	@Autowired
 	private EmployeeRepository repo;
-	
+
 	public List<Employee> getAllEmployees() {
 		return repo.findAll();
 	}
@@ -42,5 +42,13 @@ public class EmployeeService {
 	public void deleteEmployee(int id) {
 		repo.deleteById(id);
 	}
+
+	public List<Employee> getByEmail(String email) {
+		return repo.findByEmail(email);
+	}
+
+//	public String getByEmail(String email) {
+//		return repo.findByEmail(email);
+//	}
 
 }

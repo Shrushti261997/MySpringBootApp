@@ -10,17 +10,17 @@ import jakarta.persistence.Table;
 @Entity
 @Table
 public class Employee {
-	
+
 	@Id
 	private int id;
 	private String first_name;
 	private String last_name;
 	private String email;
 	private LocalDate date_of_birth;
-	private  Instant date_of_joining;
+	private Instant date_of_joining;
 	private boolean status;
 	private String role;
-	
+
 	public Employee() {
 		super();
 	}
@@ -108,14 +108,5 @@ public class Employee {
 				+ ", date_of_birth=" + date_of_birth + ", date_of_joining=" + date_of_joining + ", status=" + status
 				+ ", role=" + role + "]";
 	}
-
-	
-
-	
-	
-	
-	
-	
-	
 
 }
