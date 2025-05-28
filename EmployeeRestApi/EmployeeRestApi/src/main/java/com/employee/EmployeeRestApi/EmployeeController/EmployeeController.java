@@ -80,4 +80,15 @@ public class EmployeeController {
 
 		}
 	}
+	
+	@GetMapping("/by-fname")
+	public ResponseEntity<?> GetByName(@RequestParam String fname) {
+		List<Employee> emp = service.getByName(fname);
+		if(emp.isEmpty())
+		{
+			return new ResponseEntity<String>("Employee not foun with fname:"+fname,HttpStatus.NOT_FOUND);
+		} else {
+			return new ResponseEntity<List<Employee>>(emp,HttpStatus.OK);
+		}
+	}
 }
