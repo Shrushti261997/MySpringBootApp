@@ -1,5 +1,6 @@
 package com.employee.EmployeeRestApi.EmployeeService;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,7 +33,7 @@ public class EmployeeService {
 		emp.setFirstName(updatedEmp.getFirstName());
 		emp.setLastName(updatedEmp.getLastName());
 		emp.setEmail(updatedEmp.getEmail());
-		emp.setDate_of_birth(updatedEmp.getDate_of_birth());
+		emp.setdateOfBirth(updatedEmp.getdateOfBirth());
 		emp.setDate_of_joining(updatedEmp.getDate_of_joining());
 		emp.setRole(updatedEmp.getRole());
 		emp.setStatus(updatedEmp.getStatus());
@@ -53,6 +54,10 @@ public class EmployeeService {
 
 	public List<Employee> getByFnameandLname(String fname, String lname) {
 		return repo.findByFirstNameAndLastName(fname,lname);
+	}
+	
+	public List<Employee> getByFirstNameAndDateOfBirth(String fname,LocalDate dateOfBirth ){
+		return repo.findByFirstNameAndDateOfBirth(fname, dateOfBirth);
 	}
 
 }

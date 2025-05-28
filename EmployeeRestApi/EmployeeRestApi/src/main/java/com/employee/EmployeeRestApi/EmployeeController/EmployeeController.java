@@ -1,5 +1,6 @@
 package com.employee.EmployeeRestApi.EmployeeController;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -98,11 +99,22 @@ public class EmployeeController {
 		List <Employee> emp = service.getByFnameandLname(fname,lname);
 		if(emp.isEmpty())
 		{
-			return new ResponseEntity<String>("Employee not found with first name:"+fname +" and last name:"+lname,HttpStatus.NOT_FOUND); 
+			return new ResponseEntity<String>("Employee not found with first name:"+fname +" and last name:"+lname,HttpStatus.NO_CONTENT); 
 		}else
 		{
 			return new ResponseEntity<List<Employee>>(emp,HttpStatus.OK);
 		}
+	}
+	
+	@GetMapping("/by-fname/by-date-of-birth")
+	public ResponseEntity<?> getFirstNameandDateOfBirth(@RequestParam String fname,@RequestParam LocalDate dateOfBirth)
+	{
+		 List<Employee> emp = service.getByFirstNameAndDateOfBirth(fname, dateOfBirth);
+		 if(emp.isEmpty())
+		 {
+			 return new ResponseEntity<String>("Employee not found with first name :"+fname +" and Date of Birth as: " + dateOfBirth,HttpStatus.NO_CONTENT);
+		 }
+		 return new ResponseEntity<List<Employee>>(emp,HttpStatus.OK);
 	}
 
 	

@@ -1,5 +1,6 @@
 package com.employee.EmployeeRestApi.EmployeeRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,5 +17,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 	List<Employee> findByFirstName(String fname);
 
 	List<Employee> findByFirstNameAndLastName(String fname, String lname);
+	
+	List<Employee> findByFirstNameAndDateOfBirth(String fname,LocalDate dateOfBirth);
 
 }
