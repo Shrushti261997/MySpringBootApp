@@ -16,7 +16,8 @@ public class Employee {
 	private int id;
 	@Column(name = "first_name")
 	private String firstName;
-	private String last_name;
+	@Column(name="last_name")
+	private String lastName;
 	private String email;
 	private LocalDate date_of_birth;
 	private Instant date_of_joining;
@@ -27,12 +28,12 @@ public class Employee {
 		super();
 	}
 
-	public Employee(int id, String firstName, String last_name, String email, LocalDate date_of_birth,
+	public Employee(int id, String firstName, String lastName, String email, LocalDate date_of_birth,
 			Instant date_of_joining, boolean status, String role) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
-		this.last_name = last_name;
+		this.lastName = lastName;
 		this.email = email;
 		this.date_of_birth = date_of_birth;
 		this.date_of_joining = date_of_joining;
@@ -56,12 +57,12 @@ public class Employee {
 		this.firstName = firstName;
 	}
 
-	public String getLast_name() {
-		return last_name;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public String getEmail() {
@@ -106,7 +107,7 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", firstName=" + firstName + ", last_name=" + last_name + ", email=" + email
+		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", date_of_birth=" + date_of_birth + ", date_of_joining=" + date_of_joining + ", status=" + status
 				+ ", role=" + role + "]";
 	}

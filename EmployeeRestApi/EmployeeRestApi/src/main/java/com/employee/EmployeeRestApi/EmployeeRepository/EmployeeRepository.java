@@ -15,4 +15,6 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
 	List<Employee> findByFirstName(String fname);
 
+	List<Employee> findByFirstNameAndLastName(String fname, String lname);
+
 }

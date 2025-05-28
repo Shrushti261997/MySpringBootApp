@@ -30,7 +30,7 @@ public class EmployeeService {
 	public Employee updateEmployee(int id, Employee updatedEmp) {
 		Employee emp = repo.findById(id).orElseThrow();
 		emp.setFirstName(updatedEmp.getFirstName());
-		emp.setLast_name(updatedEmp.getLast_name());
+		emp.setLastName(updatedEmp.getLastName());
 		emp.setEmail(updatedEmp.getEmail());
 		emp.setDate_of_birth(updatedEmp.getDate_of_birth());
 		emp.setDate_of_joining(updatedEmp.getDate_of_joining());
@@ -49,6 +49,10 @@ public class EmployeeService {
 
 	public List<Employee> getByName(String fname) {
 		return repo.findByFirstName(fname);
+	}
+
+	public List<Employee> getByFnameandLname(String fname, String lname) {
+		return repo.findByFirstNameAndLastName(fname,lname);
 	}
 
 }

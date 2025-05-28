@@ -86,9 +86,24 @@ public class EmployeeController {
 		List<Employee> emp = service.getByName(fname);
 		if(emp.isEmpty())
 		{
-			return new ResponseEntity<String>("Employee not foun with fname:"+fname,HttpStatus.NOT_FOUND);
+			return new ResponseEntity<String>("Employee not found with fname:"+fname,HttpStatus.NOT_FOUND);
 		} else {
 			return new ResponseEntity<List<Employee>>(emp,HttpStatus.OK);
 		}
 	}
+	
+	@GetMapping("/by-fname/by-lname")
+	public ResponseEntity<?> GetByFirstNameandLastName(@RequestParam String fname,@RequestParam String lname)
+	{
+		List <Employee> emp = service.getByFnameandLname(fname,lname);
+		if(emp.isEmpty())
+		{
+			return new ResponseEntity<String>("Employee not found with first name:"+fname +" and last name:"+lname,HttpStatus.NOT_FOUND); 
+		}else
+		{
+			return new ResponseEntity<List<Employee>>(emp,HttpStatus.OK);
+		}
+	}
+
+	
 }
